@@ -1,103 +1,142 @@
 import Image from "next/image";
+import Link from 'next/link';
+
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <section className="py-12 bg-white text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="text-4xl md:text-5xl font-bold">
+            <h1 className="text-4xl md:text-5xl font-bold">Find A UGA Partner</h1>
+            <p className="text-lg text-gray-600">
+              Connect with fellow Bulldogs, find nearby study partners for your courses, and boost your academic success together.
+            </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <div className="mx-auto w-[800px]">
+            <Image 
+                  src="/students-studying.png" 
+                  alt="Students studying together" 
+                  width={800}
+                  height={500}
+                  className="rounded-lg shadow-md w-full h-auto object-cover"
+                  />
+                
+
+            <div className="flex justify-center mt-4">
+            <Link
+            href="/sign-up"
+            className="inline-block bg-[#c9102f] text-white text-base font-medium px-6 py-3 rounded-lg hover:bg-[#a3001d] transition-colors no-underline"
+            >
+              Get Start
+              </Link>
+            </div>
+          </div>
+         </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Finding the perfect study partner to enhance your UGA learning experience
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Map Feature */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold mb-4">Using Map</h3>
+              <div className="mb-4">
+                <Image 
+                  src="/map.png" 
+                  alt="Map feature" 
+                  width={500}
+                  height={300}
+                  className="rounded-md"
+                />
+              </div>
+              <p className="mb-6 text-gray-600">
+                Use the map feature to easily find study buddies on campus or in nearby cafes and libraries. 
+                Simply click Start to see who is studying around you.
+              </p>
+              <Link 
+              href="/sign-up" 
+              className="inline-block text-white bg-[#c9102f] px-4 py-2 rounded font-medium hover:bg-[#a3001d] transition-colors"
+              >
+                Start
+                </Link>
+
+            </div>
+            
+            {/* Course Matching Feature */}
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold mb-4">Based on course matching</h3>
+              <div className="relative h-60 mb-4">
+                <Image 
+                  src="/course-matching.png" 
+                  alt="Course matching" 
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="rounded-md"
+                />
+              </div>
+              <p className="mb-6 text-gray-600">
+                Enter the code of the UGA course you are taking. The system will automatically recommend 
+                students who are taking the same course. We take into account your study habits,
+                academic interests and location preferences to recommend the most suitable study partner for you.
+              </p>
+              <Link href="/sign-up" className="inline-block text-white bg-[#c9102f] px-4 py-2 rounded font-medium hover:bg-[#a3001d] transition-colors">
+                Start
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">What Our Users Say...</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
+              <p className="italic mb-4 text-gray-600">
+                "Through UGA Study Partner, I found a study group in my Calculus class, and we
+                worked together to prepare for the final exam and all ended up getting As! I highly
+                recommend this program to anyone who wants to improve their study efficiency!"
+              </p>
+              <div>
+                <p className="font-bold">Jessica C</p>
+                <p className="text-sm text-gray-500">Computer Science</p>
+              </div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
+              <p className="italic mb-4 text-gray-600">
+                "As a transfer student, this app helped me find study buddies in the same major
+                and not only improved my grades, but also made new friends!"
+              </p>
+              <div>
+                <p className="font-bold">Tony J</p>
+                <p className="text-sm text-gray-500">Business</p>
+              </div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
+              <p className="italic mb-4 text-gray-600">
+                "The map feature is fantastic! I can always find a classmate in the library or coffee shop
+                who is taking the same course!"
+              </p>
+              <div>
+                <p className="font-bold">Michael K</p>
+                <p className="text-sm text-gray-500">Chemistry</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+     
     </div>
   );
 }
+
