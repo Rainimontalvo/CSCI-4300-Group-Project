@@ -37,7 +37,6 @@ const Header = () => {
         <div className="flex-grow flex justify-end items-center">
           <nav className="flex space-x-12 mr-8 text-lg font-medium">
             <Link href="/" className="text-black no-underline hover:underline transition">Home</Link>
-            <Link href="/how-to-find-a-partner" className="text-black no-underline hover:underline transition">How to Find A Partner</Link>
           </nav>
           
           {/* Sign Up / Sign Out button */}
