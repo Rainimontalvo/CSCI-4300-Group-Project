@@ -36,21 +36,21 @@ const Header = () => {
         {/* Center/Right navigation links */}
         <div className="flex-grow flex justify-end items-center">
           <nav className="flex space-x-12 mr-8 text-lg font-medium">
-            <Link href="/" className="text-black no-underline hover:underline transition">Home</Link>
+            <Link href="/" className="text-[var(--secondary-color)] no-underline hover:underline transition">Home</Link>
           </nav>
           
           {/* Sign Up / Sign Out button */}
           {isLoggedIn ? (
             <button 
               onClick={handleLogout} 
-              className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors"
+              className="bg-[var(--secondary-color)] text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors"
             >
               Sign Out
             </button>
           ) : (
             <Link 
               href="/sign-up" 
-              className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors no-underline"
+              className="bg-[var(--secondary-color)] text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors no-underline"
             >
               Sign Up
             </Link>
