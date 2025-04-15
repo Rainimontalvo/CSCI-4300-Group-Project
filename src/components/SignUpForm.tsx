@@ -22,7 +22,7 @@ export default function SignUpForm() {
 
     return (
         <div className="bg-white px-12 py-10 max-w-2xl mx-auto rounded-lg shadow">
-            {/*  Heading aligned with form labels */}
+            {/* Heading aligned with form labels */}
             <div className="flex">
                 <h1 className="text-3xl font-bold mb-3 ml-[44rem]">Sign Up</h1>
             </div>
