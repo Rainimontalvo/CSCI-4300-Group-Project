@@ -55,7 +55,7 @@ export default function Home() {
                   className="rounded-md"
                 />
               </div>
-              <p className="mb-6 text-gray-600">
+              <p className="flex content-center text-base mb-6 text-gray-600">
                 Use the map feature to easily find study buddies on campus or in nearby cafes and libraries. 
                 Simply click Start to see who is studying around you.
               </p>
@@ -80,7 +80,7 @@ export default function Home() {
                   className="rounded-md"
                 />
               </div>
-              <p className="mb-6 text-gray-600">
+              <p className="flex content-center text-base mb-6 text-gray-600">
                 Enter the code of the UGA course you are taking. The system will automatically recommend 
                 students who are taking the same course. We take into account your study habits,
                 academic interests and location preferences to recommend the most suitable study partner for you.
@@ -98,7 +98,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">What Our Users Say...</h2>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
               <p className="italic mb-4 text-gray-600">
                 "Through UGA Study Partner, I found a study group in my Calculus class, and we
