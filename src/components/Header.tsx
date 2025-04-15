@@ -39,18 +39,18 @@ const Header = () => {
             <Link href="/" className="text-[var(--secondary-color)] no-underline hover:underline transition">Home</Link>
           </nav>
           
-          {/* Sign Up / Sign Out button */}
+          {/* Sign Up / Sign Out */}
           {isLoggedIn ? (
             <button 
               onClick={handleLogout} 
-              className="bg-[var(--secondary-color)] text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors"
+              className="text-white px-8 py-4 rounded-lg"
             >
               Sign Out
             </button>
           ) : (
             <Link 
               href="/sign-up" 
-              className="bg-[var(--secondary-color)] text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors no-underline"
+              className="text-white px-8 py-4 rounded-lg no-underline"
             >
               Sign Up
             </Link>

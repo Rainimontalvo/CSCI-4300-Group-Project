@@ -1,7 +1,12 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
+
 
 export default function SignUpForm() {
+    const { setIsLoggedIn } = useAuth();
+    const router = useRouter();
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -18,6 +23,8 @@ export default function SignUpForm() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Submitted:", formData);
+        setIsLoggedIn(true);  
+        router.push("/partners");
     };
 
     return (
