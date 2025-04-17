@@ -71,12 +71,12 @@ export default function Home() {
             {/* Course Matching Feature */}
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-4">Based on course matching</h3>
-              <div className="relative h-60 mb-4">
+              <div className="mb-4">
                 <Image 
                   src="/course-matching.png" 
                   alt="Course matching" 
-                  fill
-                  style={{ objectFit: 'cover' }}
+                  width={500}
+                  height={300}
                   className="rounded-md"
                 />
               </div>
@@ -139,4 +139,3 @@ export default function Home() {
     </div>
   );
 }
-
