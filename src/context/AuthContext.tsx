@@ -1,5 +1,6 @@
 'use client';
 import React, { createContext, useState, useContext, ReactNode, useEffect} from "react";
+import Cookies from 'js-cookie';
 
 interface User {
     _id: string;
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
+        const storedUser = Cookies.get('user');
         if (storedUser) {
             const userData = JSON.parse(storedUser);
             setUser(userData);
@@ -49,12 +50,14 @@ export const AuthProvider = ({ children } : { children: ReactNode }) => {
         setUser(userData);
         setIsLoggedIn(true);
         localStorage.setItem('user', JSON.stringify(userData));
+        Cookies.set('user', JSON.stringify(userData), { expires: 7 }); // expired in 7 days.
     };
 
     const logout = () => {
         setUser(null);
         setIsLoggedIn(false);
         localStorage.removeItem('user');
+        Cookies.remove('user');
     };
 
     return (
