@@ -1,3 +1,4 @@
+// src/components/Header.tsx
 'use client';
 
 import Link from 'next/link';
@@ -7,11 +8,11 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
   const router = useRouter();
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    logout();
     router.push('/');
   };
 
@@ -37,23 +38,37 @@ const Header = () => {
         <div className="flex-grow flex justify-end items-center">
           <nav className="flex space-x-12 mr-8 text-lg font-medium">
             <Link href="/" className="text-[var(--secondary-color)] no-underline hover:underline transition">Home</Link>
+            {isLoggedIn && (
+              <Link href="/partners" className="text-[var(--secondary-color)] no-underline hover:underline transition">Partners</Link>
+            )}
           </nav>
           
-          {/* Sign Up / Sign Out */}
+          {/* User actions */}
           {isLoggedIn ? (
-            <button 
-              onClick={handleLogout} 
-              className="text-white px-8 py-4 rounded-lg"
-            >
-              Sign Out
-            </button>
+            <div className="flex items-center">
+              <span className="mr-4 text-white">Welcome, {user?.firstName}</span>
+              <button 
+                onClick={handleLogout} 
+                className="text-white px-8 py-4 rounded-lg"
+              >
+                Sign Out
+              </button>
+            </div>
           ) : (
-            <Link 
-              href="/sign-up" 
-              className="text-white px-8 py-4 rounded-lg no-underline"
-            >
-              Sign Up
-            </Link>
+            <div className="flex space-x-4">
+              <Link 
+                href="/login" 
+                className="text-white px-8 py-4 rounded-lg no-underline"
+              >
+                Login
+              </Link>
+              <Link 
+                href="/sign-up" 
+                className="text-white px-8 py-4 rounded-lg no-underline"
+              >
+                Sign Up
+              </Link>
+            </div>
           )}
         </div>
       </div>

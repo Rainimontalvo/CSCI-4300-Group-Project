@@ -2,16 +2,17 @@
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-
+import React from 'react';
 
 export default function SignUpForm() {
-    const { setIsLoggedIn } = useAuth();
+    const { login } = useAuth();
     const router = useRouter();
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         email: "",
         username: "",
+        password: "",
         major: "",
         academicYear: "",
     });
@@ -19,13 +20,33 @@ export default function SignUpForm() {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
-    const handleSubmit = (e: React.FormEvent) => {
+    
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Submitted:", formData);
-        setIsLoggedIn(true);  
-        router.push("/partners");
-    };
+        try {
+            const response = await fetch("/api/auth/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(`Error: ${data.error}`);
+                return;
+            }
+
+            console.log("Success:", data);
+            login(data);
+            router.push("/partners");
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again later.');
+        }
+    };  
 
     return (
         <div className="bg-white px-12 py-10 max-w-2xl mx-auto rounded-lg shadow">
@@ -75,7 +96,6 @@ export default function SignUpForm() {
                         />
                     </div>
 
-                    {/* Username */}
                     <div className="flex flex-col items-start">
                         <label className="block text-base font-semibold mb-2">Username</label>
                         <input
@@ -87,7 +107,18 @@ export default function SignUpForm() {
                         />
                     </div>
 
-                    {/* Major */}
+                    <div className="flex flex-col items-start">
+                        <label className="block text-base font-semibold mb-2">Password</label>
+                        <input 
+                            name="password"
+                            type="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            className="w-[300px] h-10 px-3 text-sm border rounded"
+                            required 
+                        />
+                    </div>
+
                     <div className="flex flex-col items-start">
                         <label className="block text-base font-semibold mb-2">Major</label>
                         <input
@@ -99,7 +130,6 @@ export default function SignUpForm() {
                         />
                     </div>
 
-                    {/* Academic Year */}
                     <div className="flex flex-col items-start">
                         <label className="block text-base font-semibold mb-2">Academic Year</label>
                         <input
@@ -111,14 +141,12 @@ export default function SignUpForm() {
                         />
                     </div>
 
-                    {/* Submit Button */}
                     <button
                         type="submit"
                         className="bg-red-700 text-white px-6 py-2 mt-4 rounded hover:bg-red-800"
                     >
                         Submit
                     </button>
-
                 </div>
             </form>
         </div>
