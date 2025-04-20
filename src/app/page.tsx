@@ -45,8 +45,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Map Feature */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-4">Using Map</h3>
-              <div className="mb-4">
+              <h3 className="text-3xl font-bold text-center mb-12">Using Map</h3>
+              <div className="mx-auto w-[800px]">
                 <Image 
                   src="/map.png" 
                   alt="Map feature" 
@@ -55,23 +55,17 @@ export default function Home() {
                   className="rounded-md"
                 />
               </div>
-              <p className="flex content-center text-base mb-6 text-gray-600">
+              <p className="flex content-center text-center mb-6 text-gray-600">
                 Use the map feature to easily find study buddies on campus or in nearby cafes and libraries. 
                 Simply click Start to see who is studying around you.
               </p>
-              <Link 
-              href="/sign-up" 
-              className="inline-block text-white bg-[#c9102f] px-4 py-2 rounded font-medium hover:bg-[#a3001d] transition-colors"
-              >
-                Start
-                </Link>
 
             </div>
             
             {/* Course Matching Feature */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-4">Based on course matching</h3>
-              <div className="mb-4">
+              <h3 className="text-3xl font-bold text-center mb-12">Based on course matching</h3>
+              <div className="mx-auto w-[800px]">
                 <Image 
                   src="/course-matching.png" 
                   alt="Course matching" 
@@ -85,9 +79,7 @@ export default function Home() {
                 students who are taking the same course. We take into account your study habits,
                 academic interests and location preferences to recommend the most suitable study partner for you.
               </p>
-              <Link href="/sign-up" className="inline-block text-white bg-[#c9102f] px-4 py-2 rounded font-medium hover:bg-[#a3001d] transition-colors">
-                Start
-              </Link>
+
             </div>
           </div>
         </div>
