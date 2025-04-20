@@ -1,4 +1,3 @@
-// src/components/Header.tsx
 'use client';
 
 import Link from 'next/link';
@@ -19,7 +18,6 @@ const Header = () => {
   return (
     <header className="bg-[#b22234] text-white">
       <div className="flex justify-between items-center">
-        {/* Left side with logo only */}
         <div className="flex items-center bg-black py-4 px-6">
           <div className="w-20 h-20 relative">
             <Link href="/">
@@ -34,19 +32,18 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Center/Right navigation links */}
         <div className="flex-grow flex justify-end items-center">
           <nav className="flex space-x-12 mr-8 text-lg font-medium">
-            <Link href="/" className="text-[var(--secondary-color)] no-underline hover:underline transition">Home</Link>
+            <Link href="/" className="text-white no-underline hover:underline transition">Home</Link>
+            
             {isLoggedIn && (
-              <Link href="/partners" className="text-[var(--secondary-color)] no-underline hover:underline transition">Partners</Link>
+              <Link href="/partners" className="text-white no-underline hover:underline transition">Partners</Link>
             )}
           </nav>
           
-          {/* User actions */}
           {isLoggedIn ? (
             <div className="flex items-center">
-              <span className="mr-4 text-white">Welcome, {user?.firstName}</span>
+              <span className="mr-4 text-white">Welcome, {user?.firstName || 'User'}</span>
               <button 
                 onClick={handleLogout} 
                 className="text-white px-8 py-4 rounded-lg"
