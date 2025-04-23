@@ -42,11 +42,11 @@ export default function Home() {
             Finding the perfect study partner to enhance your UGA learning experience
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
             {/* Map Feature */}
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-3xl font-bold text-center mb-12">Using Map</h3>
-              <div className="mx-auto w-[800px]">
+              <div className="flex-justify center mx-auto w-[800px]">
                 <Image 
                   src="/map.png" 
                   alt="Map feature" 
@@ -65,7 +65,7 @@ export default function Home() {
             {/* Course Matching Feature */}
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-3xl font-bold text-center mb-12">Based on course matching</h3>
-              <div className="mx-auto w-[800px]">
+              <div className="flex justify-center mx-auto w-[800px]">
                 <Image 
                   src="/course-matching.png" 
                   alt="Course matching" 
