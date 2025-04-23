@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import MapComponent from './MapComponent';
+import { useRouter } from 'next/navigation';
 
 interface PartnerCardProps {
+  id: string;
   name: string;
   gender: string;
   major: string;
@@ -13,47 +16,93 @@ interface PartnerCardProps {
 }
 
 const PartnerCard: React.FC<PartnerCardProps> = ({
-  name,
-  gender,
-  major,
-  course,
-  meetingPreferences,
-  meetingLocations,
-  groupSizePreference,
-  photo
+  id, name, gender, major, course, meetingPreferences, meetingLocations, groupSizePreference, photo
 }) => {
-  const handleAdd = () => {
-    alert(`You have added ${name} as a study partner!`);
+  const router = useRouter();
+  const [showMap, setShowMap] = useState(false);
+
+  const handleDelete = async () => {
+    const confirmDelete = confirm(`Are you sure you want to delete ${name}?`);
+    if (!confirmDelete) return;
+
+    try {
+      const res = await fetch(`/api/partners/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(`Error: ${data.error}`);
+        return;
+      }
+
+      alert("Partner deleted!");
+      // Optionally: refresh list or remove card from state
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert("Failed to delete.");
+    }
+  };
+
+  const handleEdit = () => {
+    router.push(`/edit-partner/${id}`);
   };
 
   return (
-    <div className="relative mb-6 border-2 border-gray-300 rounded-xl p-6 bg-white shadow-sm flex flex-col gap-4">
+    <div className='mb-6 border-2 border-[var(--grey-color)] rounded-xl p-6 bg-white relative'>
+      <Image
+        src={photo}
+        alt={`${name}'s photo`}
+        width={80}
+        height={80}
+        className="rounded-full object-cover"
+      />
+
+      <div className="space-y-2">
+        <p><span className='font-bold'>Name:</span> {name}</p>
+        <p><span className='font-bold'>Gender:</span> {gender}</p>
+        <p><span className="font-bold">Major:</span> {major}</p>
+        <p><span className="font-bold">Course:</span> {course}</p>
+        <p><span className="font-bold">Meeting Preferences:</span> {meetingPreferences}</p>
+        <p><span className="font-bold">Meeting Locations:</span> {meetingLocations}</p>
+        <p><span className="font-bold">Group Size Preference:</span> {groupSizePreference}</p>
+      </div>
+
+      <div className="flex gap-2 absolute top-5 right-5">
+        <button
+          className="bg-[var(--primary-color)] text-white py-2 px-6 rounded hover:opacity-90"
+        >
+          Add
+        </button>
+
+        <button
+          onClick={handleEdit}
+          className="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600"
+        >
+          Edit
+        </button>
+
+        <button
+          onClick={handleDelete}
+          className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
+        >
+          Delete
+        </button>
+      </div>
+
       <button
-        onClick={handleAdd}
-        className="absolute top-4 right-4 bg-[#c9102f] text-white px-4 py-2 rounded-md hover:bg-[#a3001d] transition"
+        onClick={() => setShowMap(!showMap)}
+        className="mt-4 bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700"
       >
-        Add
+        {showMap ? "Hide Directions" : "Show Directions"}
       </button>
 
-      <div className="flex gap-4 items-start">
-        <Image
-          src={photo}
-          alt={`${name}'s photo`}
-          width={80}
-          height={80}
-          className="rounded-full object-cover border"
-        />
-
-        <div className="space-y-1 text-left">
-          <p><span className="font-bold">Name:</span> {name}</p>
-          <p><span className="font-bold">Gender:</span> {gender}</p>
-          <p><span className="font-bold">Major:</span> {major}</p>
-          <p><span className="font-bold">Course:</span> {course}</p>
-          <p><span className="font-bold">Meeting Preferences:</span> {meetingPreferences}</p>
-          <p><span className="font-bold">Meeting Locations:</span> {meetingLocations}</p>
-          <p><span className="font-bold">Group Size Preference:</span> {groupSizePreference}</p>
+      {showMap && (
+        <div className="mt-4">
+          <MapComponent destination={`${meetingLocations}, Athens, GA`} />
         </div>
-      </div>
+      )}
     </div>
   );
 };
